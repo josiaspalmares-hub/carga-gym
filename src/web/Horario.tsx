@@ -73,7 +73,7 @@ export function Horario() {
           const enCurso = dia === hoy && c.hora <= minutos && minutos < c.hora + c.dura
           const pasada = dia === hoy && c.hora + c.dura <= minutos
           const esProxima = proxima === c && !enCurso
-          const texto = `Hola CARGA, quiero reservar cupo en ${c.nombre} el ${dia === hoy ? 'día de hoy' : DIAS[dia].toLowerCase()} a las ${horaTexto(c.hora)}.`
+          const texto = `Hola CARGA, quiero reservar cupo en ${c.nombre} el ${dia === hoy ? 'día de hoy' : DIAS[dia].toLowerCase()} a las ${horaTexto(c.hora)}`
           return (
             <li key={`${c.hora}-${c.nombre}`} className={cn('grid grid-cols-[104px_1fr] items-center gap-x-4 gap-y-2 py-4 sm:grid-cols-[110px_1fr_auto]', pasada && 'text-gris [&_.text-gris]:text-gris')}>
               <span className="titular text-2xl whitespace-nowrap normal-case tabular-nums sm:text-3xl">{horaTexto(c.hora)}</span>
