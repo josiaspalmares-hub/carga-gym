@@ -1,6 +1,5 @@
 import { abrirMensaje } from '@/lib/mensaje'
 import { useEffect, useState } from 'react'
-import { MensajeDemo } from '@/components/MensajeDemo'
 import { cn } from '@/lib/utils'
 import { Areas, Portada, Razones } from './Arriba'
 import { Horario } from './Horario'
@@ -53,7 +52,6 @@ export function App() {
         <Ubicacion />
       </main>
       <Pie />
-      <MensajeDemo />
     </>
   )
 }

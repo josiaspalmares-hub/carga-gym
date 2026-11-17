@@ -1,6 +1,4 @@
-// Proyecto de muestra: en vez de abrir WhatsApp, muestra el mensaje que le llegaría al gimnasio
-export const EVENTO_MENSAJE = 'carga:mensaje'
-
+// Proyecto de muestra: abre WhatsApp con el mensaje listo pero sin número, así no le llega a nadie por error
 export function abrirMensaje(texto: string) {
-  window.dispatchEvent(new CustomEvent<string>(EVENTO_MENSAJE, { detail: texto }))
+  window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`, '_blank', 'noopener')
 }
