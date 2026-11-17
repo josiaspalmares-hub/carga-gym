@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@import "@fontsource/barlow-condensed/latin-700.css";
+@import "@fontsource/barlow-condensed/latin-800.css";
+@import "@fontsource/barlow/latin-400.css";
+@import "@fontsource/barlow/latin-600.css";
+
+/* Sistema de diseño de CARGA: grafito y hueso, amarillo de señal solo para la acción */
+@theme {
+  --color-grafito: #141515;
+  --color-grafito-2: #1e2020;
+  --color-grafito-3: #2a2d2d;
+  --color-hueso: #f1eee6;
+  --color-hueso-2: #e5e1d6;
+  --color-gris: #5d5f5c;
+  --color-gris-claro: #a9aba6;
+  --color-senal: #ffc21a;
+  --color-senal-2: #e8ab00;
+  --color-ok: #1f5f38;
+
+  --font-titular: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-sans: 'Barlow', system-ui, sans-serif;
+
+  --radius-campo: 8px;
+  --radius-tarjeta: 14px;
+  --ease-salida: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--color-hueso); color: var(--color-grafito); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  :focus-visible { outline: 3px solid var(--color-senal); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .contenedor { width: min(100% - 32px, 1200px); margin-inline: auto; }
+  @media (min-width: 768px) { .contenedor { width: min(100% - 64px, 1200px); } }
+  .titular { font-family: var(--font-titular); font-weight: 800; text-transform: uppercase; letter-spacing: 0.005em; line-height: 0.92; }
+  .boton {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 0 24px; border-radius: var(--radius-campo);
+    font-weight: 600; font-size: 1.02rem; text-decoration: none; cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s var(--ease-salida);
+  }
+  .boton:active { transform: scale(0.98); }
+  .boton--senal { background: var(--color-senal); color: var(--color-grafito); }
+  .boton--senal:hover { background: var(--color-senal-2); }
+  .boton--linea-clara { border: 1px solid rgb(241 238 230 / 0.45); color: var(--color-hueso); }
+  .boton--linea-clara:hover { background: var(--color-hueso); color: var(--color-grafito); }
+  .boton--grafito { background: var(--color-grafito); color: var(--color-hueso); }
+  .boton--grafito:hover { background: var(--color-grafito-3); }
+  .solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
