@@ -1,6 +1,7 @@
+import { abrirMensaje } from '@/lib/mensaje'
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { EXTRAS, PLANES, wa, type Plan } from '@/datos'
+import { EXTRAS, PLANES, type Plan } from '@/datos'
 import { bolivares, dolares, type EstadoTasa } from '@/lib/moneda'
 import { cn } from '@/lib/utils'
 
@@ -73,9 +74,9 @@ export function QuePlan({ tasa }: { tasa: EstadoTasa }) {
                 <p className="titular mt-3 text-4xl">{dolares(resultado.plan.precio)} <span className="font-sans text-base font-normal normal-case text-gris">{resultado.plan.periodo}</span></p>
                 <Bs monto={resultado.plan.precio} tasa={tasa} />
                 <p className="mt-4 text-lg">{resultado.porque}</p>
-                <a className="boton boton--grafito mt-6" href={wa(`Hola CARGA, me interesa el plan ${resultado.plan.nombre}. ¿Puedo ir a una clase de prueba?`)} target="_blank" rel="noopener">
+                <button type="button" className="boton boton--grafito mt-6" onClick={() => abrirMensaje(`Hola CARGA, me interesa el plan ${resultado.plan.nombre}. ¿Puedo ir a una clase de prueba?`)}>
                   Quiero este plan
-                </a>
+                </button>
               </motion.div>
             ) : (
               <motion.p key="vacio" className="rounded-[var(--radius-tarjeta)] border border-dashed border-hueso/25 p-6 text-hueso/75 md:p-8">
@@ -107,9 +108,9 @@ export function Planes({ tasa }: { tasa: EstadoTasa }) {
                 <li key={x} className="flex gap-3"><span aria-hidden="true" className={p.destacado ? 'text-senal' : 'text-grafito'}>—</span>{x}</li>
               ))}
             </ul>
-            <a className={cn('boton mt-8', p.destacado ? 'boton--senal' : 'boton--grafito')} href={wa(`Hola CARGA, quiero el plan ${p.nombre}.`)} target="_blank" rel="noopener">
+            <button type="button" className={cn('boton mt-8', p.destacado ? 'boton--senal' : 'boton--grafito')} onClick={() => abrirMensaje(`Hola CARGA, quiero el plan ${p.nombre}.`)}>
               Elegir {p.nombre}
-            </a>
+            </button>
           </article>
         ))}
       </div>

@@ -1,5 +1,6 @@
+import { abrirMensaje } from '@/lib/mensaje'
 import { BlurFade } from '@/components/ui/blur-fade'
-import { AREAS, CLASES, wa } from '@/datos'
+import { AREAS, CLASES } from '@/datos'
 
 const CLASES_SEMANA = Object.values(CLASES).reduce((n, dia) => n + dia.length, 0)
 
@@ -33,7 +34,7 @@ export function Portada() {
         </BlurFade>
         <BlurFade delay={0.28}>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="boton boton--senal" href={wa(PRUEBA)} target="_blank" rel="noopener">Agendar clase de prueba gratis</a>
+            <button type="button" className="boton boton--senal" onClick={() => abrirMensaje(PRUEBA)}>Agendar clase de prueba gratis</button>
             <a className="boton boton--linea-clara" href="#horario">Ver el horario de hoy</a>
           </div>
         </BlurFade>

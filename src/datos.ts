@@ -2,12 +2,9 @@
 
 export const GYM = {
   nombre: 'CARGA',
-  whatsapp: '584223243034',
   direccion: '2da transversal de Los Palos Grandes, Edif. Mirador, PB, Caracas',
   como_llegar: 'https://www.google.com/maps/search/?api=1&query=Los+Palos+Grandes+Caracas',
 }
-
-export const wa = (texto: string) => `https://wa.me/${GYM.whatsapp}?text=${encodeURIComponent(texto)}`
 
 export const HORARIO = [
   { dias: 'Lunes a viernes', horas: '5:30 a. m. – 10:00 p. m.' },

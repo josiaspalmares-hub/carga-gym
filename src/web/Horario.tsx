@@ -1,5 +1,6 @@
+import { abrirMensaje } from '@/lib/mensaje'
 import { useEffect, useState } from 'react'
-import { CLASES, DIAS, wa, type Tipo } from '@/datos'
+import { CLASES, DIAS, type Tipo } from '@/datos'
 import { cn } from '@/lib/utils'
 
 const TIPOS: (Tipo | 'Todas')[] = ['Todas', 'Fuerza', 'Cardio', 'Boxeo', 'Movilidad']
@@ -88,9 +89,9 @@ export function Horario() {
                 {pasada ? (
                   <span className="text-sm text-gris">Ya pasó</span>
                 ) : (
-                  <a className="boton boton--grafito min-h-[44px] px-4 text-[0.95rem]" href={wa(texto)} target="_blank" rel="noopener" aria-label={`Reservar cupo en ${c.nombre} a las ${horaTexto(c.hora)}`}>
+                  <button type="button" className="boton boton--grafito min-h-[44px] px-4 text-[0.95rem]" onClick={() => abrirMensaje(texto)} aria-label={`Reservar cupo en ${c.nombre} a las ${horaTexto(c.hora)}`}>
                     Reservar cupo
-                  </a>
+                  </button>
                 )}
               </span>
             </li>

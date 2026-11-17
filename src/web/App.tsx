@@ -1,5 +1,6 @@
+import { abrirMensaje } from '@/lib/mensaje'
 import { useEffect, useState } from 'react'
-import { wa } from '@/datos'
+import { MensajeDemo } from '@/components/MensajeDemo'
 import { cn } from '@/lib/utils'
 import { Areas, Portada, Razones } from './Arriba'
 import { Horario } from './Horario'
@@ -35,9 +36,9 @@ export function App() {
           <nav aria-label="Secciones" className="hidden gap-7 md:flex">
             {ENLACES.map((e) => <a key={e.href} href={e.href} className="font-semibold text-hueso/85 hover:text-hueso">{e.texto}</a>)}
           </nav>
-          <a className="boton boton--senal min-h-[42px] px-4 text-[0.95rem]" href={wa('Hola CARGA, quiero agendar mi clase de prueba gratis.')} target="_blank" rel="noopener">
+          <button type="button" className="boton boton--senal min-h-[42px] px-4 text-[0.95rem]" onClick={() => abrirMensaje('Hola CARGA, quiero agendar mi clase de prueba gratis.')}>
             Clase gratis
-          </a>
+          </button>
         </div>
       </header>
       <main id="contenido">
@@ -52,6 +53,7 @@ export function App() {
         <Ubicacion />
       </main>
       <Pie />
+      <MensajeDemo />
     </>
   )
 }
